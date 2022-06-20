@@ -1,0 +1,28 @@
+{% extends 'homebase.html' %}
+{% block main %}
+    <div id="content_hero" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyAX4SrFqYKuuTqN7NLYsROCDXvDX5_zKl_w&usqp=CAU)">
+
+        <div class="container">
+            <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0"
+                data-translatey="100">
+                <div class="col-md-9">
+                    <span class="title">Have any questions?</span>
+                    <h1>Please contact us</h1>
+                    <h1>Registration</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" action="{% url 'user_register' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="row">
+                {{ field.label_tag }}{{ field }}
+            </div>
+            {% endfor %}
+            <button class="btn btn-success" type="submit">Регистрация</button>
+        </form>
+    </div>
+{% endblock %}

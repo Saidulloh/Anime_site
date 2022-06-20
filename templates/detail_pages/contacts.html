@@ -1,0 +1,124 @@
+{% extends 'homebase.html' %}
+{% block main %}
+<div id="content_hero"
+    style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyAX4SrFqYKuuTqN7NLYsROCDXvDX5_zKl_w&usqp=CAU)">
+
+    <div class="container">
+        <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0"
+            data-translatey="100">
+            <div class="col-md-9">
+                <span class="title">Have any questions?</span>
+                <h1>Please contact us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container section negative-margin">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="map">
+                <div
+                    style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
+                    <div class="gm_style"
+                        style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;">
+                        <div tabindex="0" aria-label="Map" aria-roledescription="map" role="region"
+                            style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url('https://maps.gstatic.com/mapfiles/openhand_8_8.cur'), default; touch-action: pan-x pan-y;">
+                            <div
+                                style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;">
+                                <div
+                                    style="z-index: 4; position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform: translate(0px, 0px);">
+                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%; height: 100%;">
+                                        <span id="645D743F-B86B-47B1-9A3E-C143FDA2FB1F" style="display: none;">To
+                                            navigate, press the arrow keys.</span>
+                                        <div title tabindex="-1"
+                                            style="width: 100%; height: 100%; overflow: hidden; position: absolute; cursor: pointer; touch-action: none; z-index: 0;">
+                                            <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.572954710657!2d72.79503061507378!3d40.528929179352225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bdad12f404472f%3A0x7a5dcf3fc3370c2b!2sololoOsh!5e0!3m2!1sru!2skg!4v1655461969074!5m2!1sru!2skg' draggable="false" alt=""
+                                                style="width:100%; height: 100%; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+                                            </iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container section negative-margin contact">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Send a message</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% if user.is_authenticated %}
+        <div class="col-sm-6">
+            <form action="" method="get" >
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-group right-align">
+                    <button class="btn btn-ghost" type="submit">Send message</button>
+                </div>
+            </form>
+        </div>
+        {% else %}
+        <div class="col-sm-6">
+            <h1>Что бы отправить нам сообщение вы должны зайти или зарегаться на сайте!</h1>
+        </div>
+        {% endif %}
+        <div class="col-sm-5 col-sm-push-1">
+            <div class="icon-row">
+                <div class="col">
+                    <span class="circle">
+                        <i class="material-icons">place</i>
+                    </span>
+                </div>
+                <div class="col">
+                    <h4 class="no-underline">Address</h4>
+                    <p>Street - Курманжан Датка</p>
+                </div>
+            </div>
+            <div class="icon-row">
+                <div class="col">
+                    <span class="circle">
+                        <i class="material-icons">email</i>
+                    </span>
+                </div>
+                <div class="col">
+                    <h4 class="no-underline">Email</h4>
+                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                            data-cfemail="3d54535b527d50524b54584e495c4f135e52134856">AnimeStar@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="icon-row">
+                <div class="col">
+                    <span class="circle">
+                        <i class="material-icons">phone in talk</i>
+                    </span>
+                </div>
+                <div class="col">
+                    <h4 class="no-underline">Telephone</h4>
+                    <p>+1 23 456 7890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section small-padding border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 cta">
+                <p>Need help? Contact our support team on</p>
+                <p class="gradient-text">1 23 456 7890</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends 'homebase.html' %}
+{% block main %}
+    <div id="content_hero" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjCmlx-kB5XDtngNekN5DKZs880_FbQr7Mg&usqp=CAU)">
+    <img src="https://www.klevermedia.co.uk/html_templates/movie_star_html/images/scroll-arrow.svg" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">The very latest</span>
+    <h1>Anime news</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="container section news">
+        <div class="row">
+            <div class="col-sm-7">
+                <article>
+                    <span class="categories" style="text-align: right;">New releases, What's hot</span> 
+                    <span class="categories" style="margin-left: 290px;">
+                        {% for k,v in d.items %}
+                        {% if product.id == k %}
+                        {% for i in rrr %}
+                        {% if v >= i %}
+                        <i class="material-icons">star_rate</i>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                    </span> 
+                    <h1 class="no-underline">{{ product.title }}</h1>
+                    <span>Категория:</span>
+                    {% for prod_cat in product.category.all %}
+                    <span class="categories"><small><a href="{% url 'category_detail' prod_cat.id %}">{{ prod_cat.title }},</a></small></span>
+                    {% endfor %}
+                    <div style="display: flex;"> 
+
+                    <div class="imgContainer" style="width: 40%;">
+                        <img style="width: 250px; height: 200px;" src="{{ product.image.url }}" alt="">
+                    </div>
+                    <div class="news-text w-60" style="width: 60%;">
+                        <ul style="margin-left:0">
+                        <li>
+                            <b>Год выпуска</b>
+                            <a href="#">{{ product.year_of_create }}</a>
+                        </li>
+                        <li>
+                            <b>Жанр</b>
+                            {% for prod_gen in product.genre.all %}
+                            <a href="{% url 'genre_detail' prod_gen.id %}">{{ prod_gen.title }},</a>
+                            {% endfor %}
+                        </li>                        
+                        <li>
+                            <b>Автор</b>
+                            <a href="">{{ product.owner }}</a>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                    <p>{{ product.description }}</p>
+                    
+
+                    <!-- start video -->
+
+                    <section class="dark">
+                        <div class="container section remove-bottom-padding">
+                            <div class="row comingSoon-slides">
+                                <div class="col-sm-5">
+                                    <div class="row single-slide slideOne">
+                                        <div class="col-sm-6 col-xs-12 col-sm-push-1 slide-video">
+                                            {% for vid in video %}
+                                            <video autoplay="autoplay" 
+                                            muted="" controls="controls" src="{{ vid.video.url }}" height="500px", width="550px">
+                                            </video>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end video -->
+
+                    <blockquote>Humanitatis per seacula quarta decima et quinta decima eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</blockquote>
+
+
+                    <!-- comments post start -->
+                    <div class="news-comments">
+                        {% with comments.count as total_comments %}
+                        <h2>
+                            {{ total_comments }} comment{{ total_comments|pluralize }}
+                        </h2>
+                        {% endwith %}
+
+
+                        
+                        {% for obj in page_obj %}
+                        <div class="comment">
+                            <p class="info">
+                                Comment by {{ obj.owner }}
+                                {{ obj.created }}
+                            </p>
+                            {{ comment.body|linebreaks }} 
+                        </div>
+                        
+
+                        <div class="single-comment">
+                            <img src="{{ owner.photo.url }}" class="Luke Barrett" />
+                            <p><span class="no-underline">{{ obj.owner }}</span><span style="margin-left: 300px;">
+                                {% for i in rrr %}
+                                    {% if obj.star >= i %}
+                                    <i class="material-icons">star_rate</i>
+                                    {% endif %}
+                                {% endfor %}
+                            </span></p>
+                            <p>{{ obj.comm }}</p>
+                            <span class="date">{{ obj.created }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="news-comment-form">
+
+                    <!-- comments post end -->
+
+                    <!-- pogination start -->
+                        <div class="section small-padding border-top">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <ul class="pagination">
+                                            {% for p in page_obj.paginator.page_range %}
+                                            <li><a href="?page={{ p }}">{{ p }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- pogination end -->
+                    <!-- add comment start -->
+                        {% if user.is_authenticated %}
+                            {% if new_comment %}
+                                <h2>Your comment has been added.</h2>
+                            {% else %}
+                            <div class="news-comment-form">
+                                <h2>Add a new comment</h2>
+                                <form action="" method="post" enctype="multipart/form-data" id="formComm">
+                                    {% csrf_token %}
+                                    {{form.as_p}}
+                                    <div class="form-group right-align">
+                                        <button class="btn btn-ghost" type="submit" value="Add comment">Post comment</button>
+                                    </div>
+                                </form>
+                            </div>
+                            {% endif %}
+                        {% else %}
+                        <p>Что бы оставить комментарий, вы сначала должны зарегаться!</p>
+                        {% endif %}
+                    <!-- add comment end -->
+
+                    </div>
+                </article>
+            </div>
+            <!-- sidebar start -->
+            <aside class="col-sm-3 col-sm-push-1 sidebar">
+                <!-- search start -->
+                <div class="widget">
+                    <form action="">
+                        <div class="live-search">
+                            <input type="text" name="search_word" placeholder="Поиск по тайтлу">
+                            <button class="input-group-text text-secondary" type="submit" name = 'search_button'><i
+                                class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <!-- search end -->
+
+                <div class="widget">
+                    <h3>Categories</h3>
+                    <ul>
+                        {% for cat in category_all %}
+                        <li><a href="{% url 'category_detail' cat.id %}">{{ cat.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Genres</h3>
+                    <ul>
+                        {% for gen in genres %}
+                        <a href="{% url 'genre_detail' gen.id %}" class="tag">{{ gen.title }}</a>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </aside>
+            <!-- sidebar end -->
+        </div>
+    </div>
+
+{% endblock main %}

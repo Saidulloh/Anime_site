@@ -1,0 +1,60 @@
+{% extends 'homebase.html' %}
+{% block main %}
+    <div id="content_hero" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKDmi-GS92i67MAOeXwbLtC-THS7Kfkkg-HA&usqp=CAU)">
+    <img src="https://www.klevermedia.co.uk/html_templates/movie_star_html/images/scroll-arrow.svg" alt="Scroll down" class="scroll" />
+    
+    <div class="container">
+    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+    <div class="col-md-9">
+    <span class="title">The very latest</span>
+    <h1>Anime news</h1>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<div class="container section">
+    <div class="row">  
+        <form action="">
+            <div class="live-search">
+                <input type="text" name="search_word" placeholder="Поиск по тайтлу">
+                <button class="input-group-text text-secondary" type="submit" name = 'search_button'><i
+                    class="fa fa-search"></i></button>
+            </div>
+        </form>
+        <div class="slick-carousel" id="newIn">
+            {% for prod in search_products %}
+            <div class="movie-slide">
+                <div class="movie-poster">
+                    <aside>
+                        <div>
+                            <a href="{{ prod.treyler }}" data-vbtype="video" class="venobox play">
+                                <i class="material-icons">play_arrow</i>
+                            </a>
+                            <a href="{% url 'detailanime' prod.id %}" class="read-more">read more</a>
+                            <span class="date">Released: {{ prod.year_of_create }}</span>
+                        </div>
+                    </aside>
+                    <a href="{% url 'detailanime' prod.id %}">
+                        <img src="{{ prod.image.url }}" alt="Movie image" />
+                    </a>
+                </div>
+                <h4 class="no-underline">{{ prod.title }}</h4>
+                <div class="star-rating">
+                    
+                    {% for k,v in d.items %}
+                        {% if prod.id == k %}
+                            {% for i in rrr %}
+                                {% if v >= i %}
+                                    <i class="material-icons">star_rate</i>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,179 @@
+
+		<div class="container section">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="tabs movies">
+						<ul>
+							<li><a href="#mon">Monday</a></li>
+							<li><a href="#tue">Tuezday</a></li>
+							<li><a href="#wed">Wendesday</a></li>
+							<li><a href="#thu">Thursday</a></li>
+							<li><a href="#fri">Friday</a></li>
+							<li><a href="#sat">Saturday</a></li>
+							<li><a href="#sun">Sunday</a></li>
+						</ul>
+						<div id="mon">
+							{% for product in product_all_of_monday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="tue">
+							{% for product in product_all_of_tuesday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="wed">
+							{% for product in product_all_of_wednesday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="thu">
+							{% for product in product_all_of_thursday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="fri">
+							{% for product in product_all_of_friday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="sat">
+							{% for product in product_all_of_saturday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+						<div id="sun">
+							{% for product in product_all_of_sunday %}
+							<div class="row movie-tabs">
+								<div class="col-md-2 col-sm-3">
+									<a href="{% url 'detailanime' product.pk %}">
+										<img src="{{ product.image.url }}" alt="Movie image" />
+									</a>
+								</div>
+								<div class="col-md-10 col-sm-9">
+									<h3 class="no-underline"><a href="{% url 'detailanime' product.pk %}">{{ product.title }}</a></h3>
+                                    {% for prod_gen in product.genre.all %}
+                                    {% for gen in genres %}
+                                    {% if prod_gen == gen %}
+									<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ prod_gen }},</a></span>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+									<p>{{ product.description|truncatewords:30 }}</p>
+									<p><a href="{% url 'detailanime' product.pk %}" class="arrow-button">Full info about anime</a></p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,57 @@
+{% extends 'homebase.html' %}
+{% block main %}
+
+        <div id="content_hero" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyAX4SrFqYKuuTqN7NLYsROCDXvDX5_zKl_w&usqp=CAU)">
+
+            <div class="container">
+                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0"
+                    data-translatey="100">
+                    <div class="col-md-9">
+                        <span class="title">Лучшие аниме только у нас!</span>
+                        <h1>Жанры</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="container section">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2>{{ genre.title }}</h2>
+					<div class="slick-carousel" id="newIn">
+                        {% for product in product_all %}
+						<div class="movie-slide">
+							<div class="movie-poster">
+								<aside>
+									<div>
+                                        <a href="{{ product.treyler }}" data-vbtype="video" class="venobox play vbox-item" tabindex="0">
+                                            <i class="material-icons">play_arrow</i>
+                                        </a>
+										<a href="{% url 'detailanime' product.id %}" class="read-more">read more</a>
+										<span class="date">Released: {{ product.year_of_create }}</span>
+									</div>
+								</aside>
+								<a href="{% url 'detailanime' product.id %}">
+									<img src="{{ product.image.url }}" alt="Movie image" />
+								</a>
+							</div>
+							<h4 class="no-underline">{{ product.title }}</h4>
+							<div class="star-rating">
+                                {% for k,v in d.items %}
+                                {% if product.id == k %}
+                                {% for i in rrr %}
+                                {% if v >= i %}
+                                <i class="material-icons">star_rate</i>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% endfor %}
+							</div>
+						</div>
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+        
+{% endblock %} 

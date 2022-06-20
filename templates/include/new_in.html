@@ -1,0 +1,37 @@
+
+		<div class="container section">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2>New in</h2>
+					<div class="slick-carousel" id="newIn">
+                        {% for product in latest_products %}
+						<div class="movie-slide">
+							<div class="movie-poster">
+								<aside>
+									<div>
+										<a href="{% url 'detailanime' product.id %}" class="read-more">read more</a>
+										<span class="date">Released: {{ product.year_of_create }}</span>
+									</div>
+								</aside>
+								<a href="{% url 'detailanime' product.id %}">
+									<img src="{{ product.image.url }}" alt="Movie image" />
+								</a>
+							</div>
+							<h4 class="no-underline">{{ product.title }}</h4>
+							<div class="star-rating">
+                                {% for k,v in d.items %}
+                                {% if product.id == k %}
+                                {% for i in rrr %}
+                                {% if v >= i %}
+                                <i class="material-icons">star_rate</i>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                                {% endfor %}
+							</div>
+						</div>
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>

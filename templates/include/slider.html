@@ -1,0 +1,38 @@
+
+		<div id="hero" class="carousel slide carousel-fade" data-ride="carousel">
+			<img src="https://www.klevermedia.co.uk/html_templates/movie_star_html/images/scroll-arrow.svg" alt="Scroll down" class="scroll" />
+			<div class="container">
+				<ol class="carousel-indicators">
+					<li data-target="#hero" data-slide-to="0" class="active"></li>
+					<li data-target="#hero" data-slide-to="1"></li>
+					<li data-target="#hero" data-slide-to="2"></li>
+				</ol>
+			</div>
+			
+			<div class="carousel-inner">
+				{% for prod in product_slider %}
+				<div class="item active" style="background-image: url({{prod.image.url}})">
+					<div class="container">
+						<div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1"
+							data-opacity="0" data-translatey="100">
+							<div class="col-md-9">
+								{% for prod_gen in prod.genre.all %}
+								{% for gen in genres %}
+								{% if prod_gen.id == gen.id %}
+								<span class="title"><a href="{% url 'genre_detail' gen.id %}">{{ gen.title }},</a></span>
+								{% endif %}
+								{% endfor %}
+								{% endfor %}
+								<h1>{{ prod.title }}</h1>
+								<p>{{ prod.description|truncatewords:15 }}</p>
+								<div class="buttons">
+									<button style="background-color: transparent; border-radius: 20px;"><a href="{% url 'detailanime' prod.pk %}"> Watch now</a></button>
+								</div>
+								{{loop.counter}}
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}	
+			</div>
+		</div>
