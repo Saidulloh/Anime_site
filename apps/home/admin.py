@@ -29,3 +29,8 @@ class GenreAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':['title']}
 
 admin.site.register(Genre, GenreAdmin)
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('owner', 'product', 'created')
+
+admin.site.register(Comment, CommentAdmin)
