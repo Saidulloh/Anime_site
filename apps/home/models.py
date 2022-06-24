@@ -65,9 +65,6 @@ class Product(models.Model):
         verbose_name_plural = 'Аниме'
         ordering = ['-id']
 
-    def get_absolute_url(self):
-        return reverse("product_detail", kwargfs = {'slug':self.slug})
-
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='Аниме')

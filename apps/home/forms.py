@@ -10,6 +10,5 @@ class CommentForm(forms.ModelForm):
 
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length = 255)
     subject = forms.CharField(max_length = 255)
     message = forms.CharField(max_length = 1000)

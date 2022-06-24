@@ -17,6 +17,7 @@ def user_register_view(request):
             user = User.objects.get(username=form.cleaned_data['username'])
             user.set_password(form.cleaned_data['password'])
             user.save()
+            login(request, user)
             return redirect('homepage')
     return render(request, 'user/register.html', {'form': form})
 

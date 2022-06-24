@@ -18,7 +18,7 @@ class VideoInlide(admin.TabularInline):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'year_of_create', 'owner', 'id')
+    list_display = ('title', 'year_of_create', 'owner', 'id', 'day_of_create')
     prepopulated_fields = {'slug':['title']}
     inlines = [ImageInline, VideoInlide]
 

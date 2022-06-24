@@ -45,14 +45,16 @@
 						<li>
 							<a href="{% url 'this_week' %}">What's on</a>
 						</li>
-						<li class="dropdown">
-							<a href="{% url 'user_login' %}">Log in</a>
-						</li>
-						<li class="dropdown">
-							<a href="{% url 'user_register' %}">Registeration</a>
-						</li>
-						<li class="dropdown">
-							<a href="{% url 'user_logout' %}">Logout</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Settings
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a href="{% url 'user_register' %}">Registeration</a></li>
+								<li><a href="{% url 'user_login' %}">Log in</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a href="{% url 'user_logout' %}">Logout</a></li>
+							</ul>
 						</li>
 						<li>
 							<a href="{% url 'contacts' %}">Contact</a>

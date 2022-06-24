@@ -7,22 +7,70 @@
                 data-translatey="100">
                 <div class="col-md-9">
                     <span class="title">Have any questions?</span>
-                    <h1>Please contact us</h1>
                     <h1>Registration</h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <form method="post" enctype="multipart/form-data" action="{% url 'user_register' %}">
+    <style>
+        body {
+        background-color:transparent;
+        }
+
+        .registration-cssave{
+        padding:50px 0;
+        }
+
+        .registration-cssave form {
+        max-width:800px;
+        padding:50px 70px;
+        border-radius:10px;
+        box-shadow:4px 4px 15px rgba(0, 0, 0, 0.2);
+        background-color:#fff;
+        }
+
+        .registration-cssave form h3 {
+        font-weight:bold;
+        margin-bottom:30px;
+        }
+
+        .registration-cssave .item {
+        border-radius:10px;
+        margin-bottom:25px;
+        padding:10px 20px;
+        }
+
+        .registration-cssave .create-account {
+        border-radius:30px;
+        padding:10px 20px;
+        font-size:18px;
+        font-weight:bold;
+        background-color:#3f93ff;
+        border:none;
+        color:white;
+        margin-top:20px;
+        }
+
+        @media (max-width: 576px) {
+        .registration-cssave form {
+            padding:50px 20px;
+        }
+        }
+    </style>
+
+    <div class="registration-cssave" style="background: black;">
+        <form method="post" enctype="multipart/form-data" action="{% url 'user_register' %}" style="margin-left: 200px;">
+            <h3 class="text-center">Авторизация</h3>
             {% csrf_token %}
             {% for field in form %}
             <div class="row">
                 {{ field.label_tag }}{{ field }}
             </div>
             {% endfor %}
-            <button class="btn btn-success" type="submit">Регистрация</button>
+            <div class="form-group">
+                <span><button class="btn btn-primary btn-block create-account" type="submit">Регистрация</button></span>Есть аккаунт?<a href="{% url 'user_login' %}">Вход</a>
+            </div>
         </form>
     </div>
 {% endblock %}

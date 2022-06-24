@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
-from django.core.files.base import ContentFile
-from django.views import generic
-from django.urls import reverse_lazy
 from django.db.models import Q
 from django.core.paginator import Paginator
 import datetime
 from .forms import *
 from .models import *
-from services.send_mail import send_email
+from .service import send
 
 # Create your views here.
 
@@ -148,6 +145,9 @@ def what_is_on_this_week(request):
         return render(request, 'detail_pages/search_page.html', locals())
     else:
         time_now = datetime.datetime.now()
+        day_of_the_week = datetime.datetime.ctime(time_now)
+        day = day_of_the_week.split(' ')[0]
+
         return render(request, 'detail_pages/what_is_on.html', locals())
 
 
@@ -157,12 +157,10 @@ def contacts(request):
         print('форма')
         if form.is_valid():
             print('валидна')
-            send_email(
-                form.cleaned_data['name'],
-                request.user.email,
+            send(
                 form.cleaned_data['subject'],
                 form.cleaned_data['message'],
+                request.user.email,
             )
-
     form = ContactForm()
     return render(request, 'detail_pages/contacts.html', locals())

@@ -23,17 +23,262 @@
                         class="fa fa-search"></i></button>
                 </div>
             </form>
+            <div class="today-views">
+                <!-- Сегодня выйдут start -->
+                {% if day == 'Mon' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_monday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times   
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Tue' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_tuesday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Wed' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_wednesday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Thu' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_thursday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Fri' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <span><h3>Сегодня выйдут</h3></span>
+                    {% for product in product_all_of_friday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Sat' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_saturday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% elif day == 'Sun' %}
+                <div>
+                    <span>{{ time_now }}</span><span style="margin-left: 5px;">{{ day }}</span>
+                    <h3>Сегодня выйдут</h3>
+                    {% for product in product_all_of_sunday %}
+                    <div class="row movie-tabs">
+                        <div class="col-md-2 col-sm-3">
+                            <a href="{% url 'detailanime' product.id %}">
+                                <img src="{{ product.image.url }}" alt="Movie title" />
+                            </a>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+                            <span class="title"></span>
+                            <h3 class="no-underline">{{ product.title }}</h3>
+                            <p>{{ product.description|truncatewords:30 }}</p>
+                            <p><a href="{% url 'detailanime' product.id %}" class="arrow-button">Full synopsis</a></p>
+                            <div class="row">
+                                <div class="col-md-8 col-sm-9">
+                                    <hr class="space-10" />
+                                    <span class="viewing-times">
+                                        <i class="material-icons">access_time</i>
+                                        Viewing times
+                                    </span>
+                                    <span class="time">Время выхода аниме</span>
+                                </div>
+                                <div class="col-md-4 col-sm-3 running-time">
+                                    <hr class="space-10" />
+                                    25 mins
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <!-- Сегодня выйдут end -->
+            </div>
             <div class="tabs movies">
-                <ul>
-                    <li><a href="#mon">Mon</a></li>
-                    <li><a href="#tue">Tue</a></li>
-                    <li><a href="#wed">wed</a></li>
-                    <li><a href="#thu">Thu</a></li>
-                    <li><a href="#fri">Fri</a></li>
-                    <li><a href="#sat">Sat</a></li>
-                    <li><a href="#sun">Sun</a></li>
-                    <li class="date"><span>{{ time_now }}</span></li>
-                </ul>
+                <hr>
+                    <ul>
+                        <li><a href="#mon">Mon</a></li>
+                        <li><a href="#tue">Tue</a></li>
+                        <li><a href="#wed">Wed</a></li>
+                        <li><a href="#thu">Thu</a></li>
+                        <li><a href="#fri">Fri</a></li>
+                        <li><a href="#sat">Sat</a></li>
+                        <li><a href="#sun">Sun</a></li>
+                        <li class="date"><span>{{ time_now }}</span></li>
+                    </ul>
+
                 <div id="mon">
                     {% for product in product_all_of_monday %}
                     <div class="row movie-tabs">
